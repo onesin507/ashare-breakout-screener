@@ -57,6 +57,8 @@ hit = screen_one(bars)   # dict on a breakout day, else None
 
 ## Research notes / 回测笔记（作者研究，样本与局限如实标注）
 
+Full aggregate notes: [docs/research-notes.md](docs/research-notes.md). Highlights:
+
 - **Parameter study (consolidation breakout):** tightening the original
   rules (range 25%→20%, breakout gain 4%→6%, volume ratio 2.5→3.0) raised
   the 20-day win rate in the author's 2021-01 – 2026-09 study from 46.3%
@@ -79,15 +81,21 @@ hit = screen_one(bars)   # dict on a breakout day, else None
 ## Layout / 目录
 
 ```
-ashare_breakout/   screener.py (rules) · washout.py (S1/S2/S4) · cli.py
+ashare_breakout/   screener.py (breakout rules) · washout.py (S1/S2/S4)
+                   pullback.py (limit-up callback / N-shape analysis)
+                   chips.py (chip-distribution estimate, model only)
+                   first_board.py (first-board ID + promotion helpers)
+                   fetch_tencent.py (experimental public-data fetcher)
+                   cli.py (CSV screener)
+docs/              research-notes.md (aggregate backtest notes, see below)
 examples/          sample_bars.csv (synthetic, 1 textbook breakout)
 tests/             unittest suite for the rules and the universe filter
 ```
 
 ## Roadmap / 后续
 
-- Optional public-data fetcher (Tencent/Sina daily bars) behind the same CSV interface
-- N-shape and limit-up-pullback screeners, ported from the author's private research scripts
+- Harden the experimental Tencent fetcher and add a Sina fallback
+- Intraday (14:35) variants of the four screeners, once a public intraday source is wired in
 - Larger-sample re-validation of the fund-flow falsification filter
 
 ## Maintainer / 维护者
