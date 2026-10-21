@@ -1,0 +1,2 @@
+# Core screener and CLI use only the Python standard library (Python >= 3.10).
+# Nothing to install.
